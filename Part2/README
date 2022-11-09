@@ -1,0 +1,2 @@
+Developing a VM that executes a program in the .out file produced by the first step.
+When the second step is tested, your first step will be executed and the file it produces will be passed to the program of the second step. Grading will be based on the output from executing the program and whether or not errors (segmentation faults, etc.) occur.
