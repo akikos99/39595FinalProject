@@ -529,17 +529,19 @@ int main(int argc, char** argv)
     std::string outFileName = prefix + ".bin";
 
     // std::ofstream outFile(outFileName);
+    std::cout << "we've entered this" << std::endl;
 
     ofstream my_file(outFileName, ios_base::binary);
     if (!my_file.is_open()) {
+        std::cout << "we've encountered an error" << std::endl;
         cout << "error" << endl;
-        return;
+        return 0;
     }
-    for (int i = 0; i < n; i++) {
+    
+    for (int i = 0; i < stringBufferArr.size(); i++) {
+        std::cout << "we've entered this" << std::endl;
         // If strings are null-terminated use +1 to separate them in file
-        my_file.write(&str_array[i][0], str_array[i].length() + 1);
-        // If strings aren't null-terminated write a null symbol after string
-        // my_file.write("\0", 1);
+        my_file.write(&stringBufferArr[i][0], stringBufferArr[i].length() + 1);
     }
     my_file.close();
     return 0;
