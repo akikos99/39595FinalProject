@@ -526,9 +526,9 @@ int main(int argc, char** argv)
 //    }
     std::string prefix = std::string(argv[1]);
     //std::string prefix = "test";
-    std::string outFileName = prefix + ".out";
+    // std::string outFileName = prefix + ".out";
 
-    std::ofstream outFile(outFileName);
+    // std::ofstream outFile(outFileName);
 
     
     // outFile.write((char*) "test", sizeof(int));
@@ -536,5 +536,21 @@ int main(int argc, char** argv)
     // cout << "test" << endl;
     // outFile.open(outFileName);
     // outFile << "test" << endl;
+
+
+        std::string binFileName = prefix + ".bin";
+    ofstream my_file(binFileName, ios_base::binary);
+        if (!my_file.is_open()) {
+            cout << "error" << endl;
+            
+            
+        }
+        for (int i = 0; i < n; i++) {
+            // If strings are null-terminated use +1 to separate them in file
+            my_file.write(&str_array[i][0], str_array[i].length() + 1);
+            // If strings aren't null-terminated write a null symbol after string
+            // my_file.write("\0", 1);
+        }
+        my_file.close();
     return 0;
 } 
