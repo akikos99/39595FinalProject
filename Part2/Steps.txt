@@ -1,0 +1,4 @@
+1. Convert from .bin into .ascii
+2. Parse each line to find specific opcode/acction. Separate instruction buffer from string buffer
+3. DATA STRRUCTURES: Instruction Memory, PC, Runtime, Data Memory 
+4. Figure everything else out
