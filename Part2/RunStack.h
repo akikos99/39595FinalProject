@@ -10,6 +10,7 @@ class RunStack {
         int getStackValue();
         void dup();
         void swap();
+        void add();
     private:
         RunStack();
         static RunStack* uniqueInstance;
