@@ -31,3 +31,21 @@ void RunStack::add(){
     run_stack.erase(run_stack.begin());
     run_stack[0] = top + second;
 }
+
+void RunStack::negate(){
+    run_stack[0] = 0 - run_stack[0];
+}
+
+void RunStack::mul(){
+    int top = run_stack[0];
+    int second = run_stack[1];
+    run_stack.erase(run_stack.begin());
+    run_stack[0] = top * second;
+}
+
+void RunStack::div(){
+    int top = run_stack[0];
+    int second = run_stack[1];
+    run_stack.erase(run_stack.begin());
+    run_stack[0] = top / second;
+}

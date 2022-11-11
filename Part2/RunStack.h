@@ -11,6 +11,9 @@ class RunStack {
         void dup();
         void swap();
         void add();
+        void negate();
+        void mul();
+        void div();
     private:
         RunStack();
         static RunStack* uniqueInstance;
