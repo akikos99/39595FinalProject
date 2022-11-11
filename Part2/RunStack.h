@@ -8,6 +8,8 @@ class RunStack {
         static RunStack* getInst();
         std::vector<int> run_stack;
         int getStackValue();
+        void dup();
+        void swap();
     private:
         RunStack();
         static RunStack* uniqueInstance;
