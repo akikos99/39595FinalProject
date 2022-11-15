@@ -62,6 +62,7 @@ int main(int argc, char** argv)
     RunStack* r_Stack = RunStack::getInst();
     DataMemory* d_Mem = DataMemory::getInst();
     vector<int> returnAddress; 
+    vector<int> stackSize;
 
     int endCount =0;
     
@@ -152,6 +153,7 @@ int main(int argc, char** argv)
     if (strstr (foo[0].c_str (), gosublabel.c_str ()))
     {
         d_Mem->addStack(stoi(foo[1]));
+        stackSize.insert(stackSize.begin(), stoi(foo[1])); // hold the size of the stack so you can pop off the correct amt at return
         pc++;
     }
     else if (strstr (foo[0].c_str (), start.c_str ()))
@@ -177,144 +179,89 @@ int main(int argc, char** argv)
     }
   else if (strstr (foo[0].c_str (), gosub.c_str ()))
     {
-        r_Stack->run_stack;
+        returnAddress.insert(returnAddress.begin(), (pc+1));
+        pc = stoi(foo[1]);
     }
   else if (strstr (foo[0].c_str (), return_str.c_str ()))
     {
-       
+       pc = returnAddress[0];
+       returnAddress.erase(returnAddress.begin());
+       d_Mem->deleteStack(stackSize[0]);
+       stackSize.erase(stackSize.begin());
+
     }
   else if (strstr (foo[0].c_str (), pushscal.c_str ()))
     {
-        std::string instruction = foo[0];
-        std::string total = instruction + " " + foo[1] + " ?";
-        i_buff->add_instruction(total);
-        //int location = inst_buffer.size();
-//      cout << "pushscal is present." << endl;
-        instCount++;
+        d_Mem->pushScl(stoi(foo[1]), r_Stack);
+        pc++;
     }
   else if (strstr (foo[0].c_str (), pusharr.c_str ()))
     {
-        std::string instruction = foo[0];
-        std::string total = instruction + " " + foo[1] + " ?";
-        i_buff->add_instruction(total);
-        //int location = inst_buffer.size();
-//      cout << "pusharr is present." << endl;
-        instCount++;
+        d_Mem->pushArr(stoi(foo[1]), r_Stack);
+        pc++;
     }
   else if (strstr (foo[0].c_str (), pushi.c_str ()))
     {
-        std::string instruction = foo[0];
-        std::string total = instruction + " " +foo[1];
-        i_buff->add_instruction(total);
-        //int location = inst_buffer.size();
-//      cout << "pushi is present." << endl;
-        instCount++;
+        r_Stack->run_stack.insert(r_Stack->run_stack.begin(), stoi(foo[1]));
+        pc++;
     }
   else if (strstr (foo[0].c_str (), popscal.c_str ()))
     {
-        std::string instruction = foo[0];
-        std::string total = instruction + " " + foo[1] + " ?";
-        i_buff->add_instruction(total);
-        //int location = inst_buffer.size();
-//      cout << "popscal is present." << endl;
-        instCount++;
+        d_Mem->popScl(stoi(foo[1]), r_Stack);
+        pc++;
     }
   else if (strstr (foo[0].c_str (), poparr.c_str ()))
     {
-        std::string instruction = foo[0];
-        std::string total = instruction + " " + foo[1] + " ?";
-        i_buff->add_instruction(total);
-        //int location = inst_buffer.size();
-//      cout << "poparr is present." << endl;
-        instCount++;
+        d_Mem->popArr(stoi(foo[1]), r_Stack);
+        pc++;
     }
   else if (strstr (foo[0].c_str (), jump.c_str ()))
     {
-        std::string instruction = foo[0];
-        std::string total = instruction + " " + foo[1] + " ?";
-        i_buff->add_instruction(total);
-//      cout << "declarr is present." << endl;
-        instCount++;
+        /// ******** CHECK NOT SURE IF IT IS IN VM ACTIONS ********
     }
   else if (strstr (foo[0].c_str (), pop.c_str ()))
     {
-        std::string instruction = foo[0];
-        i_buff->add_instruction(foo[0]);
-        //int location = inst_buffer.size();
-//      cout << "pop is present." << endl;
-        instCount++;
+        r_Stack->run_stack.erase(r_Stack->run_stack.begin());
+        pc++;
     }
   else if (strstr (foo[0].c_str (), dup.c_str ()))
     {
-        std::string instruction = foo[0];
-        i_buff->add_instruction(foo[0]);
-        //int location = inst_buffer.size();
-//      cout << "dup is present." << endl;
-        instCount++;
+        r_Stack->dup();
+        pc++;
     }
   else if (strstr (foo[0].c_str (), swap.c_str ()))
     {
-        std::string instruction = foo[0];
-        i_buff->add_instruction(foo[0]);
-        //int location = inst_buffer.size();
-//      cout << "swap is present." << endl;
-        instCount++;
+        r_Stack->swap();
+        pc++;
     }
   else if (strstr (foo[0].c_str (), add.c_str ()))
     {
-        std::string instruction = foo[0];
-        i_buff->add_instruction(foo[0]);
-        //int location = inst_buffer.size();
-//      cout << "add is present." << endl;
-        instCount++;
+        r_Stack->add();
+        pc++;
     }
   else if (strstr (foo[0].c_str (), negate.c_str ()))
     {
-        std::string instruction = foo[0];
-        i_buff->add_instruction(foo[0]);
-        //int location = inst_buffer.size();
-//      cout << "negate is present." << endl;
-        instCount++;
+        r_Stack->negate();
+        pc++;
     }
   else if (strstr (foo[0].c_str (), mul.c_str ()))
     {
-        std::string instruction = foo[0];
-        i_buff->add_instruction(foo[0]);
-       // int location = inst_buffer.size();
-//      cout << "mul is present." << endl;
-        instCount++;
+        r_Stack->mul();
+        pc++;
     }
   else if (strstr (foo[0].c_str (), div_str.c_str ()))
     {
-        std::string instruction = foo[0];
-        i_buff->add_instruction(foo[0]);
-       // int location = inst_buffer.size();
-//      cout << "div is present." << endl;
-        instCount++;
+        r_Stack->div();
+        pc++;
     }
   else if (strstr (foo[0].c_str (), printtos.c_str ()))
     {
-        std::string instruction = foo[0];
-        i_buff->add_instruction(foo[0]);
-       // int location = inst_buffer.size();
-//      cout << "printtos is present." << endl;
-        instCount++;
+        
     }
   else if (strstr (foo[0].c_str (), prints.c_str ()))
     {
 
-        // String added to the string buffer
-       // stringBufferArr[arrayIndex] = foo[1];
-        stringBufferArr.push_back(foo[1]);
-
-        //   Now add inst to inst buffer
-
-        std::string instruction = foo[0];
-        std::string total = instruction + " " + std::to_string(arrayIndex);
-        i_buff->add_instruction(total);
-      //  int location = inst_buffer.size();
-        arrayIndex += 1;
-        instCount++;
+       
 
     }
   else
