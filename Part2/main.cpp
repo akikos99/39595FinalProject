@@ -55,7 +55,7 @@ int main(int argc, char** argv)
           return -1;
        }
     int arrayIndex = 0;
-    vector<std::string> stringBufferArr;
+    vector<std::string> stringTable;
     std::string instructionBufferArr[24];
     int endCount =0;
     
@@ -95,33 +95,36 @@ int main(int argc, char** argv)
 
     //ifstream inFile("test.txt");
     string str1;
+    bool instructionBool = false;
+
 
     while (inFile)
     {
-       // str1 is the line extracted from the .asm file
         // str1 is the line extracted from the .asm file
 
         getline(inFile, str1);
+        //  != string::npos
+        if (str1.find("start")) {
+            instructionBool = true;
+            // // This means it's from the instructuion buffer and we should add it to the Instruction memory
+            // split (str1, seperator);
+        }
 
-        std::string foo [3];
-        string sample = "Some sample text";
-    
-        char seperator = ' ';    // space
-        if (sample.find(seperator) != string::npos) {
-            // This means it's from the instructuion buffer and we should add it to the Instruction memory
-            split (str1, seperator);
+        if (instructionBool == true) {
+            // Add to Instruciton memory
         }
         else
         {
-            // This means it's from the string buffer and we should add it to the String table
-            // Don't split
-            ;
-
+            //add to string memory
         }
-        for (int i = 0; i < max; i++)
-        {
-           foo[i] = strings[i];
-        }
+        
+        // SAVE FOR GOING THROUGH INST MEM
+        // std::string foo [3];
+        // char seperator = ' ';    // space
+        // for (int i = 0; i < max; i++)
+        // {
+        //    foo[i] = strings[i];
+        // }
 
     
 
