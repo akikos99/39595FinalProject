@@ -256,13 +256,14 @@ int main(int argc, char** argv)
     }
   else if (strstr (foo[0].c_str (), printtos.c_str ()))
     {
-        
+        std::cout << r_Stack->run_stack[0] << std::endl;
+        r_Stack->run_stack.erase(r_Stack->run_stack.begin());
+        pc++;
     }
   else if (strstr (foo[0].c_str (), prints.c_str ()))
     {
-
-       
-
+        std::cout << stringTable[stoi(foo[1])] << std::endl;
+        pc++;
     }
   else
     {
