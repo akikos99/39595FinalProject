@@ -168,12 +168,24 @@ int main(int argc, char** argv)
     else if (strstr (foo[0].c_str (), jumpzero.c_str ()))
     {
         // Piazza @561 to finish!!!!!!!!
+        if(r_Stack->run_stack[0] == 0){
+            pc = stoi(foo[1]);
+        }
+        else {
+            pc++;
+        }
         r_Stack->run_stack.erase(r_Stack->run_stack.begin());
         // pc = foo[]
     }
   else if (strstr (foo[0].c_str (), jumpnzero.c_str ()))
     {
         // Piazza @561 to finish!!!!!!!!
+        if(r_Stack->run_stack[1] != 0){
+            pc = stoi(foo[1]);
+        }
+        else{
+            pc++;
+        }
         r_Stack->run_stack.erase(r_Stack->run_stack.begin());
         // pc = foo[]
     }
@@ -217,7 +229,7 @@ int main(int argc, char** argv)
     }
   else if (strstr (foo[0].c_str (), jump.c_str ()))
     {
-        /// ******** CHECK NOT SURE IF IT IS IN VM ACTIONS ********
+        pc = stoi(foo[1]);
     }
   else if (strstr (foo[0].c_str (), pop.c_str ()))
     {
