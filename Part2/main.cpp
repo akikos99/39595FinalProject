@@ -154,13 +154,14 @@ int main(int argc, char** argv)
     
     if (strstr (foo[0].c_str (), gosublabel.c_str ()))
     {
-        d_Mem->addStack(stoi(foo[1]));
+        d_Mem->addSubStack(stoi(foo[1]));
         stackSize.insert(stackSize.begin(), stoi(foo[1])); // hold the size of the stack so you can pop off the correct amt at return
         pc++;
     }
     else if (strstr (foo[0].c_str (), start.c_str ()))
     {
-        d_Mem->addStack(stoi(foo[1]));
+        d_Mem->addMainStack(stoi(foo[1]));
+        d_Mem->mainsize = stoi(foo[1]);
         pc++;
     }
     else if (strstr (foo[0].c_str (), exit_str.c_str ()))
@@ -196,10 +197,10 @@ int main(int argc, char** argv)
     {
         returnAddress.insert(returnAddress.begin(), (pc+1));
         pc = stoi(foo[1]);
-        for (int i = 0; i < returnAddress.size(); i++)
-        {
-          std::cout << returnAddress[i] << std::endl;
-        }
+        // for (int i = 0; i < returnAddress.size(); i++)
+        // {
+        //   //std::cout << returnAddress[i] << std::endl;
+        // }
     }
   else if (strstr (foo[0].c_str (), return_str.c_str ()))
     {
