@@ -1,0 +1,14 @@
+start 4
+pushi 4
+pushi 8
+pushi 1
+poparray 0
+pushi 2
+poparray 0
+pushi 1
+pusharray 0
+pushi 2
+pusharray 0
+printtos 
+printtos 
+exit

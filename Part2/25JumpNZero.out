@@ -1,0 +1,19 @@
+this_should_not_print_1
+this_should_print_1
+this_should_print_2
+this_should_not_print_2
+start 0
+pushi 1
+dup
+jumpnzero 5
+prints 0
+prints 1
+dup
+pushi 1
+negate
+add
+jumpnzero 13
+prints 2
+jump 14
+prints 3
+exit

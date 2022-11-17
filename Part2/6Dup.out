@@ -1,0 +1,6 @@
+start 0
+pushi 6
+dup
+printtos
+printtos
+exit

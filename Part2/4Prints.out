@@ -1,0 +1,8 @@
+2+6=
+start 0
+pushi 2
+pushi 6
+add
+prints 0
+printtos
+exit

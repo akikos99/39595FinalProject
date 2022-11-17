@@ -1,6 +1,10 @@
 #include "RunStack.h"
 #include <string>
 #include <vector>
+#include <iostream>
+#include <cstring>
+#include <fstream>
+#include <string>
 
 RunStack* RunStack::uniqueInstance = nullptr;
  

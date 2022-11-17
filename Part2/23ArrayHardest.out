@@ -1,0 +1,19 @@
+start 8
+gosub 3
+jump 15
+gosublabel 8
+pushi 4
+pushi 8
+pushi 2
+poparray 8
+pushi 0
+poparray 15
+pushi 2
+pusharray 8
+pushi 0
+pusharray 15
+return
+printtos
+pop
+printtos
+exit

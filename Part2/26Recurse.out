@@ -1,0 +1,23 @@
+in_FIB
+start 0
+pushi 3
+gosub 5
+printtos
+jump 21
+gosublabel 1
+prints 0
+dup
+popscal 0
+pushi 1
+negate
+add
+dup
+jumpzero 18
+gosub 5
+pushscal 0
+mul
+jump 20
+pop
+pushi 1
+return
+exit

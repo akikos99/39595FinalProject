@@ -1,0 +1,7 @@
+this_should_not_print
+this_should_print
+start 0
+jump 3
+prints 0
+prints 1
+exit

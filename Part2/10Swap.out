@@ -1,0 +1,7 @@
+start 0
+pushi 6
+pushi 7
+swap
+printtos
+printtos
+exit

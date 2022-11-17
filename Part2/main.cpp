@@ -115,6 +115,7 @@ int main(int argc, char** argv)
 
         if (str1.find("start") != string::npos) {
             instructionBool = true;
+            // std::cout <<"Start has been found"<< std::endl;
         }
 
         if (instructionBool == true) {
@@ -134,8 +135,9 @@ int main(int argc, char** argv)
     bool instMemDone = false;
     int pc = 0; // index of instruction memory vector location
 
-    while (!instMemDone)
+    while (!instMemDone and instructionBool == true)
     {   
+        // std::cout <<"While loop has been entered"<< std::endl;
         std::string foo [3];
         char seperator = ' ';    // space
 
@@ -145,9 +147,9 @@ int main(int argc, char** argv)
 
         for (int i = 0; i < max; i++)
         {
-           foo[i] = strings[i];
+          // std::cout <<"Setting Foo"<< std::endl;
+          foo[i] = strings[i];
         }
-
          //Using strstr() and converting string to c-string.
     
     if (strstr (foo[0].c_str (), gosublabel.c_str ()))
@@ -163,6 +165,7 @@ int main(int argc, char** argv)
     }
     else if (strstr (foo[0].c_str (), exit_str.c_str ()))
     {
+        // std::cout <<"Entered Exit"<< std::endl;
         instMemDone = true;   
     }
     else if (strstr (foo[0].c_str (), jumpzero.c_str ()))
@@ -180,7 +183,7 @@ int main(int argc, char** argv)
   else if (strstr (foo[0].c_str (), jumpnzero.c_str ()))
     {
         // Piazza @561 to finish!!!!!!!!
-        if(r_Stack->run_stack[1] != 0){
+        if(r_Stack->run_stack[0]){
             pc = stoi(foo[1]);
         }
         else{
@@ -193,6 +196,10 @@ int main(int argc, char** argv)
     {
         returnAddress.insert(returnAddress.begin(), (pc+1));
         pc = stoi(foo[1]);
+        for (int i = 0; i < returnAddress.size(); i++)
+        {
+          std::cout << returnAddress[i] << std::endl;
+        }
     }
   else if (strstr (foo[0].c_str (), return_str.c_str ()))
     {
@@ -279,46 +286,34 @@ int main(int argc, char** argv)
     }
   else
     {
-        if(instCount == 0){
-            cout << "Error none are present." << endl;
-        }
-        else if(endCount == 0){
-            std::cout << "Error: No End Statement In Program" << std::endl;
-        }
-        else if(endErr){
-            //does nothing
-        }
-        else if (ScalErr) {
-            std::cout << "error: attempting to add variable with name " << ErrScal << " twice" << std::endl;
-        }
-        else if (ArrErr) {
-            std::cout << "error: attempting to add variable with name " << ErrArr << " twice" << std::endl;
-        }
-        else if (LabelErr) {
-            std::cout << "error: attempting to add label with name " << ErrLabel << " twice" << std::endl;
-        }
-        else {
-            //Print String Buffer
-            for(int y = 0; y< stringBufferArr.size(); y++){
-                std::cout << stringBufferArr[y] << std::endl;
-            }
-            // printing Instruction Buffer
-            int ib_size = (int)i_buff->inst_buffer.size();
-            for(int z=0;z<ib_size; z++){
-                std::cout << i_buff->inst_buffer[z] << std::endl;
-            }
-        }
-      
+        // if(instCount == 0){
+        //     cout << "Error none are present." << endl;
+        // }
+        // else if(endCount == 0){
+        //     std::cout << "Error: No End Statement In Program" << std::endl;
+        // }
+        // else if(endErr){
+        //     //does nothing
+        // }
+        // else if (ScalErr) {
+        //     std::cout << "error: attempting to add variable with name " << ErrScal << " twice" << std::endl;
+        // }
+        // else if (ArrErr) {
+        //     std::cout << "error: attempting to add variable with name " << ErrArr << " twice" << std::endl;
+        // }
+        // else if (LabelErr) {
+        //     std::cout << "error: attempting to add label with name " << ErrLabel << " twice" << std::endl;
+        // }
+        // if {
+
+          ;
     }
 
 
         // Set at the end of the vector
-        instMemDone = true;
     }
+    // std::cout << i_Mem->inst_Mem << std::endl;
     
 
-    
-
-    
     return 0;
 } 

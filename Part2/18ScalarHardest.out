@@ -1,0 +1,15 @@
+start 2
+gosub 3
+jump 11
+gosublabel 2
+pushi 4
+pushi 8
+popscal 2
+popscal 3
+pushscal 2
+pushscal 3
+return
+printtos
+pop
+printtos
+exit

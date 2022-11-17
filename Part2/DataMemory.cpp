@@ -35,7 +35,8 @@ void DataMemory::popArr(int opnd, RunStack* rs){
     int e = opnd + stackValue;
     rs->run_stack.erase(rs->run_stack.begin());
    
-    data_mem[e] = stackValue;
+    data_mem[e] = rs->run_stack[0];
+    rs->run_stack.erase(rs->run_stack.begin());
 }
 
 void DataMemory::pushScl(int opnd, RunStack* rs){

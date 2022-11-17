@@ -1,0 +1,6 @@
+start 1
+pushi 4
+popscal 0
+pushscal 0
+printtos
+exit

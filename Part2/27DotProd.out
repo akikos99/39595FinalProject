@@ -1,0 +1,43 @@
+dot_product_value_is:
+start 10
+pushi 0
+popscal 8
+pushi 4
+popscal 9
+pushscal 9
+pushi 1
+negate
+add
+dup
+popscal 9
+dup
+poparray 0
+pushscal 9
+pushi 4
+add
+pushscal 9
+poparray 4
+pushscal 9
+jumpnzero 5
+pushi 4
+popscal 9
+pushscal 9
+pushi 1
+negate
+add
+dup
+popscal 9
+dup
+pusharray 0
+swap
+pusharray 4
+mul
+pushscal 8
+add
+popscal 8
+pushscal 9
+jumpnzero 22
+pushscal 8
+prints 0
+printtos
+exit

@@ -1,0 +1,12 @@
+exit_pgm
+start 1
+pushi 4
+gosub 4
+jump 8
+gosublabel 1
+popscal 1
+pushscal 1
+return
+popscal 0
+prints 0
+exit
